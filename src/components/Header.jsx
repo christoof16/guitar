@@ -1,16 +1,7 @@
-import {useMemo} from 'react';
-//hook enfocado al performance
 
-export default function Header({cart,removeFromCart,increaseQuantity,decreaseQuantity,clearCart}){
+export default function Header({cart,removeFromCart,increaseQuantity,decreaseQuantity,clearCart,isEmpty,cartTotal}){
                                     //removeFromCart es el nombre del la funcion de App.jsx
 
-    //state derivado
-    const isEmpty =useMemo(()=> cart.length === 0,[cart]) 
-                        //cart del otro state (por eso es state derivado)
-    //este codigo solo se ejecuta cuando carrito haya sido modificado
-
-    //evita que este codigo se ejecute si alguna de las dependencias que se definen en el usermemo no hayan cambiado, este codigo solo se ejecuta cuando carrito haya sido modificado
-    const cartTotal = useMemo(()=> cart.reduce((total,item)=>total+(item.quantity *item.price),0),[cart]);
     //solo puedes retornar una cosa
     return(
         <header className="py-5 header">
